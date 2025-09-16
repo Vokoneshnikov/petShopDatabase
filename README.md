@@ -14,7 +14,7 @@
 3) улучшить сервис для клиентов и эффективность работы питомника.
 
 ## ER-Модель нашей базы данных: 
-[Ссылка на нашу модель]https://drive.google.com/file/d/1ov_c1asmNZycbCG5VCCcM-49dZb95jWu/view?usp=sharing
+Ссылка на [нашу модель](https://drive.google.com/file/d/1ov_c1asmNZycbCG5VCCcM-49dZb95jWu/view?usp=sharing)
 <img width="937" height="762" alt="image" src="https://github.com/user-attachments/assets/a3939e73-7cb6-48bb-9f94-b5f108fe38f0" />
 
 
