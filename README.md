@@ -15,7 +15,7 @@
 
 ## ER-Модель нашей базы данных: 
 
-Ссылка на [нашу модель](<img width="1254" height="830" alt="image" src="https://github.com/user-attachments/assets/4883e355-98a9-45e3-a124-fb4a20e82095" />)
+<img width="1254" height="830" alt="image" src="https://github.com/user-attachments/assets/e2bb5e54-553f-445f-bd91-e521c6ddb10c" />
 
 ## Сущности и их атрибуты
 ### 1. Питомник
