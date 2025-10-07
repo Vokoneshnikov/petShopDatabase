@@ -89,7 +89,7 @@
 ## Проблемы ER-модели:
 ### 1) Нет корректной связи Клиент - Питомник
 
-Как сейчас:
+Как было:
 1) client связан с petshop только неявно - через pet: client.id <- pet.owner_id и pet.petshop_id -> petshop.id.
 
 ### Проблемы:
@@ -100,9 +100,14 @@
 
 3) Невозможно корректно посчитать аналитику по филиалам: обращения, повторные визиты, - т. к. связь «клиент–филиал» не хранится явно.
 
+### Решение:
+```
+alter table petshopschema.client add column petshop_id int references petshopschema.petshop(id);
+```
+
 ### 2) Сущность employee не решает назначение клетки/питомца
 
-Как сейчас:
+Как было:
 - В employee есть поля cage_id и petshop_id. Это создаёт жёсткую 1-к-1 привязку сотрудника к одной клетке и одному филиалу и не хранит историю.
 
 ### Проблемы:
@@ -112,3 +117,42 @@
 2) Нет временных интервалов — невозможно понять, кто отвечал за клетку/питомца в прошлом.
 
 3) Поле profession — справочник внутри строки; лучше нормализовать.
+
+### Решение проблемы:
+```
+alter table petshopschema.employee drop column cage_id;
+alter table petshopschema.employee drop column profession;
+
+create type profession_enum as enum ('Кипер', 'Уборщик');
+alter table petshopschema.employee add column profession profession_enum;
+
+create table petshopschema.keeper_assignments (
+    keeper_id int references employee(id),
+    pet_id int references pet(id),
+    assignment_date date,
+    primary key (keeper_id, pet_id)
+);
+
+create table petshopschema.cleaning_assignments (
+    cleaner_id int references employee(id),
+    cage_id int references cage(id),
+    cleaning_date date not null,
+    is_completed boolean default false,
+    primary key (cleaner_id, cage_id, cleaning_date)
+);
+```
+## Почему наша ER - модель соответствует 1NF и 2NF?
+### 1. Первая нормальная форма (1NF) - СОБЛЮДАЕТСЯ
+
+- Все атрибуты атомарны (не содержат множественных значений или составных данных).
+
+- Определены первичные ключи для всех таблиц.
+
+- Все строки уникальны (гарантируется первичным ключом).
+
+- Порядок строк и столбцов не имеет значения.
+
+### 2. Вторая нормальная форма (2NF) - СОБЛЮДАЕТСЯ
+
+Поскольку все таблицы имеют простой (не составной) первичный ключ (serial), то не-ключевые столбцы по определению зависят от всей части ключа (которая и есть весь ключ). Потенциальная проблема частичной зависимости отсутствует.
+> Например, в таблице petshop атрибуты address, name и pets_capacity полностью функционально зависят от первичного ключа id.
