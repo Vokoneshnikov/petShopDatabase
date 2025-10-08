@@ -117,3 +117,15 @@ passport_data однозначно определяет клиента, поэт
 ### food(id, brand_name, food_type)
 
 необходимо добавить UNIQUE(brand_name).
+
+####Исправление базы данных:
+
+```
+ALTER TABLE petshopschema.breed ADD CONSTRAINT breed_name_unique UNIQUE (breed_name);
+
+ALTER TABLE petshopschema.food ADD CONSTRAINT brand_food_type_unique UNIQUE (brand_name, food_type);
+
+ALTER TABLE petshopschema.cage ADD CONSTRAINT current_pet_unique UNIQUE (current_pet_id);
+
+ALTER TABLE petshopschema.pet ADD CONSTRAINT owner_pet_name_unique UNIQUE (owner_id, name);
+```
