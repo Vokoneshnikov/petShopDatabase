@@ -118,7 +118,7 @@ passport_data однозначно определяет клиента, поэт
 
 необходимо добавить UNIQUE(brand_name).
 
-####Исправление базы данных:
+###Исправление базы данных:
 
 ```
 ALTER TABLE petshopschema.breed ADD CONSTRAINT breed_name_unique UNIQUE (breed_name);
