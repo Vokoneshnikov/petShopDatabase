@@ -6,7 +6,7 @@
 
 - Полей-массивов/списков нет: аксессуары и лекарства у питомца вынесены в отдельные таблицы связей pet_accessorie и pet_medication вместо колонок accessory1, accessory2, ..., что устраняет повторяющиеся группы.
 
-- Значения атомарны (нет склеек вроде full_name; адрес хранится как одно поле выбранного домена, что считается атомарным).
+- Значения атомарны.
 
 - Порядок строк и столбцов не имеет значения.
 
@@ -14,9 +14,9 @@
 
 - Почти везде ключ - одиночный (id), значит не может быть частичных зависимостей: все неключевые атрибуты (name, profession, address, pets_capacity, breed_name, average_weight, и т.д.) зависят от всего ключа своей таблицы.
 
-- В таблицах-связках (pet_accessorie, pet_medication) ключ составной (pet_id, accessorie_id) / (pet_id, medication_id), но неключевых атрибутов там нет - следовательно, нарушать 2NF нечему.
+- В таблицах-связках (pet_accessorie, pet_medication) ключ составной (pet_id, accessorie_id) / (pet_id, medication_id), но неключевых атрибутов там нет.
 
-- В таблицах вроде pet, cage, breed все неключевые поля — либо собственные свойства сущности, либо внешние ключи, и зависят от полного первичного ключа (id) своей таблицы.
+- В таблицах вроде pet, cage, breed все неключевые поля - либо собственные свойства сущности, либо внешние ключи, и зависят от полного первичного ключа (id) своей таблицы.
 
 ## Почему не соответствует 3NF:
 
@@ -89,7 +89,7 @@ create table petshopschema.cleaning_assignments (
 
 ### Как исправить:
 
-1. хранить только cage_id, а petshop_id получать через JOIN; или
+1. хранить только cage_id, а petshop_id получать через JOIN или
 2. хранить только petshop_id, а привязку к клеткам вынести в отдельную связующую таблицу employee_cage(employee_id, cage_id, from_dt, to_dt).
 
 ### cage(id, animal_type_id, petshop_id, current_pet_id)
@@ -129,3 +129,4 @@ ALTER TABLE petshopschema.cage ADD CONSTRAINT current_pet_unique UNIQUE (current
 
 ALTER TABLE petshopschema.pet ADD CONSTRAINT owner_pet_name_unique UNIQUE (owner_id, name);
 ```
+<img width="945" height="818" alt="image" src="https://github.com/user-attachments/assets/d1926794-6dae-403f-946f-c79b8d8d1050" />
