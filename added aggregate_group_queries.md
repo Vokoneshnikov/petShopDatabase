@@ -67,4 +67,7 @@ Cамый взрослый питомец
 
 Названия всех пород
 ```select string_agg(breed_name, ', ') as breeds from petshopschema.breed;```
+<img width="424" height="146" alt="image" src="https://github.com/user-attachments/assets/5e513c2c-1683-4e24-b2c7-028445b879f1" />
+
+```select string_agg(breed_name, ', ') as breeds from petshopschema.breed;```
 <img width="424" height="146" alt="image" src="https://github.com/user-attachments/assets/b2801624-4870-40d1-aa79-5b175856f0b7" />
