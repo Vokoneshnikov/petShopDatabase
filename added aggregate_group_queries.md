@@ -1,4 +1,4 @@
-<img width="1076" height="135" alt="image" src="https://github.com/user-attachments/assets/c720d6a3-95a3-4b27-a7f8-cf88c6676b26" />**Средняя вместимость питомников под названием ЗооЛэнд**
+**Средняя вместимость питомников под названием ЗооЛэнд**
 ```
 select name, avg(pets_capacity) as avg_capacity from petshopschema.petshop group by name;
 ```
