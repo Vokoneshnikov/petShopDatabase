@@ -6,6 +6,7 @@ from pet;
 <img width="1564" height="608" alt="image" src="https://github.com/user-attachments/assets/13a60fb4-60a3-49bc-97fc-bb949af0daa7" />
 2. Сколько уникальных типов животных содержится в базе? 
 ```
+sql
 select count(distinct animal_type.name) from animal_type;
 ```
 <img width="1860" height="408" alt="image" src="https://github.com/user-attachments/assets/2bff7f63-32e3-47c6-be82-11daf21fc90c" />
