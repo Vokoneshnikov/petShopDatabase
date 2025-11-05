@@ -12,6 +12,7 @@ select count(distinct animal_type.name) from animal_type;
 ```
 <img width="1860" height="408" alt="image" src="https://github.com/user-attachments/assets/2bff7f63-32e3-47c6-be82-11daf21fc90c" />
 3. Сформировать колонку «ФИО сотрудника» (конкатенация employee.name и employee.surname) и вывести первые 2 строки.
+
 ```
 select employee.name  ' '  employee.surname as fio
 from employee 
@@ -19,6 +20,7 @@ limit 2;
 ```
 <img width="2014" height="514" alt="image" src="https://github.com/user-attachments/assets/c9b6526e-9fb0-40a8-b72a-74316eaf30b2" />
 4.Сформировать таблицу «Питомец — Порода — Тип животного»
+
 ```
 select p.name, b.breed_name, animal_type.name
 from pet p join breed b on p.breed_id = b.id,
@@ -26,6 +28,7 @@ breed join animal_type on animal_type_id = animal_type.id;
 ```
 <img width="1568" height="830" alt="image" src="https://github.com/user-attachments/assets/5ec3a105-5e77-4e22-b7b0-67ae45ef1e88" />
 5. Для каждого питомца вывести используемый корм
+
 ```
 select p.name, f.food_type
 from pet p join food f on p.food_id = f.id;
