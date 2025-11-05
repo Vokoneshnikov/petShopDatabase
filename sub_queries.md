@@ -10,8 +10,6 @@ select count(distinct animal_type.name)
 from animal_type; 
 ```
 <img width="1860" height="408" alt="image" src="https://github.com/user-attachments/assets/2bff7f63-32e3-47c6-be82-11daf21fc90c" />
-
-
 3. Сформировать колонку «ФИО сотрудника» (конкатенация employee.name и employee.surname) и вывести первые 2 строки.
 ```
 select employee.name  ' '  employee.surname as fio
