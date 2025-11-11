@@ -68,6 +68,7 @@ SELECT *
 FROM emp_meds
 ORDER BY employee_name;
 ```
+<img width="1194" height="558" alt="image" src="https://github.com/user-attachments/assets/093c80cb-5416-45a5-9d30-dd6a42fcad84" />
 
 4. --UNION.
 Найди все имена, встречающиеся среди клиентов и сотрудников (имена могут повторяться в жизни, но нам важны только уникальные).
@@ -78,6 +79,7 @@ union
 select name
 from employee e
 ```
+<img width="496" height="560" alt="image" src="https://github.com/user-attachments/assets/2faa0828-eba0-4135-80ef-2c2afd17c984" />
 
 5. Выведи все названия магазинов и породы, чтобы посмотреть, какие имена вообще встречаются в магазине.
 ```
@@ -85,6 +87,7 @@ select name from petshop p
 union
 select breed_name from breed b
 ```
+<img width="584" height="474" alt="image" src="https://github.com/user-attachments/assets/040c9955-2b6f-4f34-9592-81ed4a4ac2e9" />
 
 6. Показать все типы животных и типы кормов, чтобы сравнить их номенклатуру.
 ```
@@ -92,6 +95,7 @@ SELECT name FROM animal_type
 UNION
 SELECT food_type FROM food;
 ```
+<img width="550" height="606" alt="image" src="https://github.com/user-attachments/assets/4333d455-44eb-4537-9696-4abf18a90b87" />
 
 7. --intersect Найди имена, которые встречаются и у сотрудников, и у клиентов (одно и то же имя у разных людей).
 ```
@@ -99,6 +103,7 @@ select name from client
 intersect 
 select name from employee;
 ```
+<img width="568" height="368" alt="image" src="https://github.com/user-attachments/assets/74298544-4cb5-4de1-8e28-906bc7cf163f" />
 
 8. --Показать идентификаторы питомцев, которые одновременно находятся в клетках и имеют назначенные лекарства.
 ```
@@ -106,6 +111,8 @@ select current_pet_id from cage where current_pet_id is not null
 intersect 
 select pet_id from pet_medication;
 ```
+<img width="508" height="566" alt="image" src="https://github.com/user-attachments/assets/aa81483f-78bb-4762-807b-e841085b3926" />
+
 9. --except Вывести все виды животных, для которых нет ни одной породы.
 ```
 select id, name from animal_type
@@ -114,6 +121,7 @@ select a.id, a.name
 from animal_type a
 join breed b on b.animal_type_id = a.id;
 ```
+<img width="724" height="406" alt="image" src="https://github.com/user-attachments/assets/db10ec8c-407f-4828-8a0d-19811e8976d6" />
 
 10. --Найди общее количество питомцев у каждого владельца и отобрази его в каждой строке (с деталями о питомце).
 ```
@@ -125,6 +133,7 @@ SELECT
 FROM pet p
 JOIN client c ON c.id = p.owner_id;
 ```
+<img width="1386" height="582" alt="image" src="https://github.com/user-attachments/assets/5bbb9f88-8048-4613-ae1b-8c13d98c5770" />
 
 11. --Пронумеруй питомцев каждого владельца по возрасту (от старшего к младшему).
 ```
@@ -136,6 +145,7 @@ SELECT
 FROM pet p
 JOIN client c ON c.id = p.owner_id;
 ```
+<img width="1202" height="568" alt="image" src="https://github.com/user-attachments/assets/c5ca2ebb-140c-45fc-a02a-8a5771851af1" />
 
 12. --Для каждого питомца покажи средний возраст по его владельцу, включая самого питомца и его "соседей" по владельцу (до 1 вверх и вниз).
 ```
@@ -152,6 +162,7 @@ SELECT
 FROM pet p
 JOIN client c ON c.id = p.owner_id;
 ```
+<img width="1370" height="576" alt="image" src="https://github.com/user-attachments/assets/dec528d9-baac-49b6-8dc7-365dae2e20b7" />
 
 13. --Для каждого питомца — посчитать, сколько питомцев его владельца находятся в пределах ±2 лет возраста.
 ```
@@ -165,6 +176,7 @@ SELECT
     ) AS count_in_range
 FROM pet p;
 ```
+<img width="1124" height="590" alt="image" src="https://github.com/user-attachments/assets/e716ee49-eb0e-46bd-a632-7846d32a271c" />
 
 14. --Питомцы, отсортированные по возрасту внутри каждого питомника с возможными пропусками в ранге.
 ```
@@ -176,6 +188,7 @@ SELECT
 FROM pet p
 JOIN petshop pt ON pt.id = p.petshop_id;
 ```
+<img width="1432" height="602" alt="image" src="https://github.com/user-attachments/assets/341c18e1-38ed-4951-b657-b7b9e364c26c" />
 
 15. --То же самое, но без "пробелов" в ранге при совпадении возраста.
 ```
@@ -187,6 +200,7 @@ SELECT
 FROM pet p
 JOIN petshop pt ON pt.id = p.petshop_id;
 ```
+<img width="1148" height="572" alt="image" src="https://github.com/user-attachments/assets/1883d4fc-1be3-4a43-93ad-6d4f9be150bd" />
 
 16. --Найди самого старшего питомца в каждой клетке.
 ```
@@ -201,6 +215,7 @@ SELECT *
 FROM ranked
 WHERE rn = 1;
 ```
+<img width="2094" height="742" alt="image" src="https://github.com/user-attachments/assets/0b1ce914-a7ad-4670-aff8-b286ea987f3c" />
 
 17. --Покажи возраст предыдущего питомца по возрасту среди всех.
 ```
@@ -210,6 +225,7 @@ SELECT
     LAG(age) OVER (ORDER BY age) AS prev_pet_age
 from pet;
 ```
+<img width="1114" height="624" alt="image" src="https://github.com/user-attachments/assets/e14c04cc-5929-4995-9c16-642cb9d1ef81" />
 
 18. --Покажи возраст следующего питомца.
 ```
@@ -219,6 +235,7 @@ SELECT
     LEAD(age) OVER (ORDER BY age) AS next_pet_age
 FROM pet;
 ```
+<img width="984" height="616" alt="image" src="https://github.com/user-attachments/assets/9ee312e3-84fb-42e1-8309-fc9df25e3443" />
 
 19. --Покажи самого младшего питомца в каждом магазине.
 ```
@@ -230,6 +247,7 @@ SELECT
 FROM pet p
 JOIN petshop pt ON pt.id = p.petshop_id;
 ```
+<img width="1332" height="584" alt="image" src="https://github.com/user-attachments/assets/3394e217-10f7-4ca4-8187-f1333d3c72f8" />
 
 20. --Покажи самого старшего питомца в каждом магазине (только с рамкой ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING — иначе результат будет некорректен).
 ```
@@ -245,6 +263,7 @@ SELECT
 FROM pet p
 JOIN petshop pt ON pt.id = p.petshop_id;
 ```
+<img width="1352" height="570" alt="image" src="https://github.com/user-attachments/assets/4ae941aa-cb0c-4ebf-ad2b-43b882d48e7f" />
 
 21. 
 22. 
