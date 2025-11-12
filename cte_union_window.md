@@ -164,16 +164,18 @@ select pet_id from pet_medication;
 ```
 <img width="508" height="566" alt="image" src="https://github.com/user-attachments/assets/aa81483f-78bb-4762-807b-e841085b3926" />
 
-11. Питомцы, находящиеся в клетках и имеющие лекарства
+11. Взрослые питомцы (старше 1 года) в клетках 
 ```
 select current_pet_id
 from petshopschema.cage
 where current_pet_id is not null
 intersect
-select pet_id
-from petshopschema.pet_medication;
+select id
+from petshopschema.pet
+where age > 1;
 ```
-<img width="182" height="131" alt="image" src="https://github.com/user-attachments/assets/34c50d6e-c014-479e-a267-69452243263a" />
+<img width="181" height="117" alt="image" src="https://github.com/user-attachments/assets/b8e59087-5b0e-4c9b-821e-cb03a789ddee" />
+
 
 12.  --except Вывести все виды животных, для которых нет ни одной породы.
 ```
