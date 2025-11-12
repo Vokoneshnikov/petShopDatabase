@@ -246,20 +246,21 @@ JOIN client c ON c.id = p.owner_id;
 ```
 <img width="1202" height="568" alt="image" src="https://github.com/user-attachments/assets/c5ca2ebb-140c-45fc-a02a-8a5771851af1" />
 
-18. Сотрудники и количество клеток, отсортированных по размеру клетки внутри каждого зоопарка (petshop)
+18. Ранжирование питомцев по возрасту
 ```
-select 
-    ps.name as petshop_name,
-    e.name as employee_name,
-    e.surname as employee_surname,
-    c.id as cage_id,
-    c.size as cage_size,
-    count(c.id) over (partition by ps.id order by c.size desc) as cage_count_progressive
-from employee e
-join cage c on e.cage_id = c.id
-join petshop ps on c.petshop_id = ps.id
-order by petshop_name, cage_size desc;
+SELECT
+    p.id,
+    p.name,
+    p.age,
+    c.name AS owner_name,
+    RANK() OVER (
+        PARTITION BY p.owner_id
+        ORDER BY p.age DESC
+    ) AS age_rank
+FROM petshopschema.pet p
+JOIN petshopschema.client c ON c.id = p.owner_id;
 ```
+<img width="679" height="141" alt="image" src="https://github.com/user-attachments/assets/d322dce3-de57-4926-8e6f-00927b1c9bfc" />
 
 19.  --Для каждого питомца покажи средний возраст по его владельцу, включая самого питомца и его "соседей" по владельцу (до 1 вверх и вниз).
 ```
@@ -277,24 +278,6 @@ FROM pet p
 JOIN client c ON c.id = p.owner_id;
 ```
 <img width="1370" height="576" alt="image" src="https://github.com/user-attachments/assets/dec528d9-baac-49b6-8dc7-365dae2e20b7" />
-
-20. Средний вес породы с учётом соседних пород (по весу внутри типа животного)
-```
-select 
-    a.name as animal_type,
-    b.breed_name,
-    b.average_weight,
-    round(
-        avg(b.average_weight) over (
-            partition by a.id
-            order by b.average_weight
-            rows between 1 preceding and 1 following
-        ), 2
-    ) as avg_neighbor_weight
-from breed b
-join animal_type a on b.animal_type_id = a.id
-order by animal_type, b.average_weight;
-```
 
 21.  --Для каждого питомца — посчитать, сколько питомцев его владельца находятся в пределах ±2 лет возраста.
 ```
