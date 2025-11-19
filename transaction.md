@@ -1,4 +1,4 @@
-1.1 Добавление питомца и обновление клетки в одной транзакции
+## 1.1 Добавление питомца и обновление клетки в одной транзакции
 ```
 begin;
 
@@ -24,7 +24,7 @@ select * from petshopschema.cage where id = 1;
 <img width="803" height="160" alt="image" src="https://github.com/user-attachments/assets/f680c167-826e-4f92-b42d-9541116ac212" />
 
 
-1.2 То же самое, но с rollback
+## 1.2 То же самое, но с rollback
 ```
 begin;
 
@@ -49,7 +49,7 @@ select * from petshopschema.cage where id = 2;
 ```
 <img width="756" height="94" alt="image" src="https://github.com/user-attachments/assets/b237fad9-275c-40b4-a9fa-364fb43ba108" />
 
-1.3 Ошибка внутри транзакции (деление на 0)
+## 1.3 Ошибка внутри транзакции (деление на 0)
 ```
 begin;
 
@@ -68,7 +68,8 @@ select * from petshopschema.pet where id = 1003;
 ```
 <img width="1082" height="135" alt="image" src="https://github.com/user-attachments/assets/e5ac579f-68f0-45df-8801-c370d3354b72" />
 
-2.1. READ COMMITTED — грязное чтение
+
+## 2.1. READ COMMITTED — грязное чтение
 <img width="210" height="120" alt="image" src="https://github.com/user-attachments/assets/5b9b2d2c-a8ba-43f6-ae6d-54bd80470865" />T1:
 ```
 begin transaction isolation level read committed;
@@ -90,7 +91,8 @@ commit;
 ```
 <img width="218" height="98" alt="image" src="https://github.com/user-attachments/assets/e35fe6b8-3c0d-4bef-bcb0-b8760193b804" />
 
-2.2. READ COMMITTED — неповторяющееся чтение
+
+## 2.2. READ COMMITTED — неповторяющееся чтение
 T1:
 ```
 begin transaction isolation level read committed;
@@ -120,7 +122,8 @@ commit;
 ```
 <img width="240" height="100" alt="image" src="https://github.com/user-attachments/assets/6c308d78-b08c-4c84-ae1c-7f5d30dcf566" />
 
-2.3. REPEATABLE READ — повторное чтение
+
+## 2.3. REPEATABLE READ — повторное чтение
 T1:
 ```
 begin transaction isolation level repeatable read;
@@ -148,7 +151,8 @@ commit;
 ```
 <img width="231" height="117" alt="image" src="https://github.com/user-attachments/assets/07b13e06-e4d6-429e-bdd3-8ae583fe2c87" />
 
-2.4. REPEATABLE READ — фантомное чтение
+
+## 2.4. REPEATABLE READ — фантомное чтение
 T1:
 ```
 begin transaction isolation level repeatable read;
@@ -179,7 +183,8 @@ commit;
 ```
 <img width="278" height="119" alt="image" src="https://github.com/user-attachments/assets/3c6e2692-79bb-4811-ba8a-cd52bdde8231" />
 
-2.5. SERIALIZABLE — конфликт и повтор транзакции
+
+## 2.5. SERIALIZABLE — конфликт и повтор транзакции
 T1:
 ```
 begin transaction isolation level serializable;
@@ -222,7 +227,7 @@ commit
 <img width="638" height="219" alt="image" src="https://github.com/user-attachments/assets/09185f5f-6835-4ad2-9d20-6df342d141ba" />
 
 
-3.1. Один savepoint
+## 3.1. Один savepoint
 Создаём клиента и питомца, откатываемся до создания клиента
 ```
 begin;
@@ -252,7 +257,8 @@ select * from petshopschema.pet where id = 5001;
 ```
 <img width="1087" height="166" alt="image" src="https://github.com/user-attachments/assets/935ff3ef-b6ea-4770-b7b4-ec4c600c9467" />
 
-3.2. Два savepoint
+
+## 3.2. Два savepoint
 ```
 begin;
 
