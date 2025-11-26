@@ -23,6 +23,29 @@ select * from petshopschema.cage where id = 1;
 ```
 <img width="803" height="160" alt="image" src="https://github.com/user-attachments/assets/f680c167-826e-4f92-b42d-9541116ac212" />
 
+## 1.1 Добавляем нового клиента и увеличиваем вместимость связанного зоомагазина
+```
+begin;
+
+insert into petshopschema.client (id, name, surname, passport_data, petshop_id)
+values (10001, 'Иван', 'Котов', '9000000000', 1); 
+
+update petshopschema.petshop
+set pets_capacity = pets_capacity + 1
+where id = 1;
+
+commit;
+```
+
+Результаты:
+```
+select * from petshopschema.client where id = 10001; 
+```
+<img width="818" height="137" alt="image" src="https://github.com/user-attachments/assets/35ca9628-9fda-4e68-b48d-57b4f2dfdb91" />
+```
+select * from petshopschema.petshop where id = 1;
+```
+<img width="631" height="175" alt="image" src="https://github.com/user-attachments/assets/315059f1-4d02-4d24-bf49-f0dd35a74fac" />
 
 ## 1.2 То же самое, но с rollback
 ```
@@ -48,6 +71,31 @@ select * from petshopschema.pet where id = 1002;
 select * from petshopschema.cage where id = 2;
 ```
 <img width="756" height="94" alt="image" src="https://github.com/user-attachments/assets/b237fad9-275c-40b4-a9fa-364fb43ba108" />
+
+## 1.2 Добавляем сотрудника и меняем адрес магазина, а затем откатываем транзакцию
+```
+begin;
+
+insert into petshopschema.employee (id, name, surname, petshop_id, profession)
+values (3001, 'Мария', 'Иванова', 1, 'ветеринар');  -- id тоже подстрой под свои данные
+
+update petshopschema.petshop
+set address = 'Временный тестовый адрес'
+where id = 1;
+
+rollback;
+```
+
+Результаты:
+```
+select * from petshopschema.pet where id = 1002;
+```
+AJNJ
+
+```
+select * from petshopschema.cage where id = 2;
+```
+AJNJ
 
 ## 1.3 Ошибка внутри транзакции (деление на 0)
 ```
