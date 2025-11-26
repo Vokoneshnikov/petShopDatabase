@@ -125,19 +125,19 @@ LANGUAGE sql
 AS $$
     SELECT age
     FROM petshopschema.pet
-    WHERE id = $1;
+    WHERE id = p_pet_id;
 $$;
 ```
 
 6. Возвращает кол-во питомцев в питомнике
 ```
-CREATE OR REPLACE FUNCTION petshopschema.fn_petshop_pet_count(p_petshop_id int)
+CREATE OR REPLACE FUNCTION petshopschema.petshop_pet_count(p_petshop_id int)
 RETURNS int
 LANGUAGE sql
 AS $$
     SELECT COUNT(*)
     FROM petshopschema.pet
-    WHERE petshop_id = $1;
+    WHERE petshop_id = p_petshop_id;
 $$;
 ```
 
@@ -150,7 +150,7 @@ AS $$
     SELECT p.name || ' (' || COALESCE(c.surname, 'no owner') || ')'
     FROM petshopschema.pet p
     LEFT JOIN petshopschema.client c ON c.id = p.owner_id
-    WHERE p.id = $1;
+    WHERE p.id = p_pet_id;
 $$;
 ```
 # Функции с переменными
