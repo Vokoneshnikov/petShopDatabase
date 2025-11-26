@@ -2,18 +2,18 @@
 1. Добавить питомца с проверкой вместимости (IF + RAISE)
 ```
 CREATE OR REPLACE PROCEDURE petshopschema.add_pet_to_petshop(
-    p_name        varchar,
-    p_age         int,
-    p_owner_id    int,
-    p_breed_id    int,
-    p_food_id     int,
-    p_petshop_id  int
+    p_name varchar,
+    p_age int,
+    p_owner_id int,
+    p_breed_id int,
+    p_food_id int,
+    p_petshop_id int
 )
 LANGUAGE plpgsql
 AS $$
 DECLARE
     v_capacity int;
-    v_current  int;
+    v_current int;
 BEGIN
     SELECT pets_capacity
     INTO v_capacity
@@ -44,7 +44,7 @@ $$;
 2. Перевести питомца в другой зоомагазин
 ```
 CREATE OR REPLACE PROCEDURE petshopschema.transfer_pet_to_petshop(
-    p_pet_id        int,
+    p_pet_id int,
     p_new_petshop_id int
 )
 LANGUAGE plpgsql
@@ -60,15 +60,15 @@ $$;
 3. Поселить питомца в клетку (CASE + RAISE)
 ```
 CREATE OR REPLACE PROCEDURE petshopschema.assign_pet_to_cage(
-    p_pet_id  int,
+    p_pet_id int,
     p_cage_id int
 )
 LANGUAGE plpgsql
 AS $$
 DECLARE
-    v_pet_type_id   int;
-    v_cage_type_id  int;
-    v_current_pet   int;
+    v_pet_type_id int;
+    v_cage_type_id int;
+    v_current_pet int;
 BEGIN
     SELECT b.animal_type_id
     INTO v_pet_type_id
@@ -162,8 +162,8 @@ LANGUAGE plpgsql
 AS $$
 DECLARE
     v_capacity int;
-    v_count    int;
-    v_free     int;
+    v_count int;
+    v_free int;
 BEGIN
     SELECT pets_capacity
     INTO v_capacity
@@ -217,7 +217,7 @@ LANGUAGE plpgsql
 AS $$
 DECLARE
     v_type_id int;
-    v_cnt     int;
+    v_cnt int;
 BEGIN
     SELECT id
     INTO v_type_id
@@ -253,9 +253,9 @@ WHERE routine_type = 'FUNCTION'
 DO $$
 DECLARE
     v_petshop_id int := 1;     -- предположим, что магазин с id=1 существует
-    v_capacity   int;
-    v_count      int;
-    i            int := 1;
+    v_capacity int;
+    v_count int;
+    i int := 1;
 BEGIN
     SELECT pets_capacity
     INTO v_capacity
