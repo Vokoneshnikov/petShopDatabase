@@ -40,6 +40,9 @@ BEGIN
 END;
 $$;
 ```
+<img width="680" height="28" alt="image" src="https://github.com/user-attachments/assets/f365fa65-a2bf-4ab5-a711-6e14554269cc" />
+
+<img width="1115" height="339" alt="image" src="https://github.com/user-attachments/assets/85dd60df-9b57-4058-9083-acf30ced49bd" />
 
 2. Перевести питомца в другой зоомагазин
 ```
@@ -56,6 +59,9 @@ BEGIN
 END;
 $$;
 ```
+<img width="442" height="21" alt="image" src="https://github.com/user-attachments/assets/6d1e0c79-1f89-47e0-9aff-7a6a0efca1bc" />
+
+<img width="1057" height="288" alt="image" src="https://github.com/user-attachments/assets/b88cf5e9-6707-49d6-920e-de16189135cb" />
 
 3. Поселить питомца в клетку (CASE + RAISE)
 ```
@@ -108,6 +114,9 @@ BEGIN
 END;
 $$;
 ```
+<img width="496" height="156" alt="image" src="https://github.com/user-attachments/assets/c7c6a359-72e2-42d9-a944-bc5e9f3b82f0" />
+<img width="675" height="122" alt="image" src="https://github.com/user-attachments/assets/1aecbc82-c1c7-469e-8a7c-aea82f7a46bd" />
+
 
 4. Запрос просмотра всех процедур
 ```
@@ -116,6 +125,9 @@ FROM information_schema.routines
 WHERE routine_type = 'PROCEDURE'
   AND routine_schema = 'petshopschema';
 ```
+
+<img width="381" height="118" alt="image" src="https://github.com/user-attachments/assets/c90a5d5d-ff37-4c9b-a382-86999dea69a6" />
+
 # Функции
 5. Возвращает возраст питомца
 ```
