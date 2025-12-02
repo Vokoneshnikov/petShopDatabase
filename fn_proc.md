@@ -141,6 +141,8 @@ AS $$
 $$;
 ```
 
+<img width="599" height="410" alt="image" src="https://github.com/user-attachments/assets/edaebbd4-d867-4323-8851-e00e1be4ea6d" />
+
 6. Возвращает кол-во питомцев в питомнике
 ```
 CREATE OR REPLACE FUNCTION petshopschema.petshop_pet_count(p_petshop_id int)
@@ -152,6 +154,8 @@ AS $$
     WHERE petshop_id = p_petshop_id;
 $$;
 ```
+<img width="661" height="258" alt="image" src="https://github.com/user-attachments/assets/e63be97a-3a5f-41c1-a7e7-d0558fcbd90f" />
+
 
 7. Возвращает имя питомца и фамилию владельца
 ```
@@ -165,6 +169,9 @@ AS $$
     WHERE p.id = p_pet_id;
 $$;
 ```
+<img width="620" height="410" alt="image" src="https://github.com/user-attachments/assets/d60c29da-906e-4051-ab11-685c76de1e7c" />
+
+
 # Функции с переменными
 8. Возвращает свободные места в питомнике
 ```
@@ -201,6 +208,9 @@ EXCEPTION
 END;
 $$;
 ```
+<img width="708" height="278" alt="image" src="https://github.com/user-attachments/assets/8aa2d7c5-e3b0-4edb-8964-b52ab48fe49f" />
+
+
 
 9. Возвращает кол-во аксессуаров у питомца
 ```
@@ -220,6 +230,10 @@ BEGIN
 END;
 $$;
 ```
+
+<img width="717" height="384" alt="image" src="https://github.com/user-attachments/assets/2cf2b874-1afb-4381-b724-137ec94e1e58" />
+
+
 
 10. Возвращает кол-во животных определеннего типа
 ```
@@ -252,6 +266,9 @@ $$;
 
 ```
 
+<img width="771" height="291" alt="image" src="https://github.com/user-attachments/assets/7527fd8d-d146-4c9b-b0ec-727f46486bfb" />
+
+
 11. Запрос просмотра всех функций
 ```
 SELECT routine_schema, routine_name, data_type
@@ -259,6 +276,9 @@ FROM information_schema.routines
 WHERE routine_type = 'FUNCTION'
   AND routine_schema = 'petshopschema';
 ```
+
+<img width="548" height="193" alt="image" src="https://github.com/user-attachments/assets/f90c1d88-b950-4254-a753-0cffd8acd301" />
+
 
 12. Заполнение питомника, пока не кончится место
 ```
@@ -294,6 +314,9 @@ END;
 $$;
 ```
 
+<img width="344" height="911" alt="image" src="https://github.com/user-attachments/assets/8d10f36a-263e-4894-a870-a3b7614ad040" />
+
+
 13. Проверка соотношения клеток с питомцами
 ```
 DO $$
@@ -317,6 +340,9 @@ $$;
 
 ```
 
+<img width="367" height="58" alt="image" src="https://github.com/user-attachments/assets/19a8741d-3501-4c38-96bd-861b8fe7d1da" />
+
+
 14. Проверка корректности паспортных данных
 ```
 DO $$
@@ -338,3 +364,6 @@ BEGIN
 END;
 $$;
 ```
+
+<img width="310" height="55" alt="image" src="https://github.com/user-attachments/assets/7b8a6342-d89c-42b1-9162-9fee8825d34f" />
+
