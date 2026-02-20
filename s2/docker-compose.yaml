@@ -1,0 +1,14 @@
+services:
+    postgres:
+        image: postgres:16
+        container_name: first_hw_postgres
+        environment:
+            POSTGRES_USER: app
+            POSTGRES_PASSWORD: app123
+            POSTGRES_DB: petshopdatabase
+        ports: 
+        - "5432:5432"
+#         volumes:
+#         - postgres_data:/var/lib/postgresql/data
+# volumes:
+#   postgres_data:

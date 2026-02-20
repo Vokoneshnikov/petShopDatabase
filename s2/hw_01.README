@@ -1,0 +1,26 @@
+### Создание ролей:
+
+```
+
+create role app login password 'app123';
+
+create role readonly login password 'readonly123';
+
+create role updater login password 'updater123';
+
+```
+
+### Выдача прав:
+
+```
+grant connect on database petshopdatabase to app, readonly, updater;
+
+grant usage on schema petshopschema to app, readonly, updater;
+
+grant select, update, delete, insert on all tables in schema petshopschema to app;
+
+grant select on all tables in schema petshopschema to readonly;
+
+grant update on all tables in schema petshopschema to updater;
+
+```
