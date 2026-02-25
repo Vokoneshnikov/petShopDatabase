@@ -1,4 +1,3 @@
-
 alter default privileges in schema petshopschema 
     grant select, insert, update, delete on tables to app;
 
