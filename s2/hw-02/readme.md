@@ -49,7 +49,7 @@ create index index_for_pets_capacity on petshopschema.petshop(pets_capacity);
 
 ```
 
-create index index_for_pets_capacity on petshopschema.petshop(pets_capacity);
+create index index_for_client_petshop_id on petshopschema.client(petshop_id);
 
 ```
 
