@@ -38,9 +38,11 @@ create index index_for_pets_capacity on petshopschema.petshop(pets_capacity);
 
 <img width="920" height="287" alt="image" src="https://github.com/user-attachments/assets/52e372e4-2adc-4c38-8931-f0ef5a8fc5c7" />
 
-## 2. Выборка всех питомцев, у которых возраст больше 110 лет:
+## 2. Выборка всех клиентов, у которых айди питомника = 26:
 
 ### Результаты выполнения ДО:
+
+<img width="793" height="298" alt="image" src="https://github.com/user-attachments/assets/7e1e0041-5c7b-4ab1-be71-7cec8ac2578d" />
 
 
 ### Создание индекса:
@@ -54,7 +56,7 @@ create index index_for_pets_capacity on petshopschema.petshop(pets_capacity);
 
 ### Результаты выполнения ПОСЛЕ:
 
-
+<img width="949" height="247" alt="image" src="https://github.com/user-attachments/assets/4e5b6438-f0fd-4204-8fb8-f76166d13131" />
 
 
 ## 3. Выборка всех питомцев, у которых возраст больше 110 лет:
