@@ -3,13 +3,10 @@
 ```
 
 explain (analyze, buffers)
-select * from petshopschema.petshop where pets_capacity < 100;
+select * from petshopschema.pet where age > 110
 
 explain (analyze, buffers)
-select * from petshopschema.pet where age > 5
-
-explain (analyze, buffers)
-select * from petshopschema.client where petshop_id = 28;
+select * from petshopschema.client where petshop_id = 26;
 
 explain (analyze, buffers)
 select distinct name from petshopschema.client where name like '%А';
