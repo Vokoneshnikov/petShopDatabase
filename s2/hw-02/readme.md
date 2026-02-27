@@ -59,22 +59,25 @@ create index index_for_client_petshop_id on petshopschema.client(petshop_id);
 <img width="949" height="247" alt="image" src="https://github.com/user-attachments/assets/4e5b6438-f0fd-4204-8fb8-f76166d13131" />
 
 
-## 3. Выборка всех питомцев, у которых возраст больше 110 лет:
+## 3. Выборка всех клиентов, у которых имя заканчивается на "А"
 
 ### Результаты выполнения ДО:
+
+<img width="950" height="398" alt="image" src="https://github.com/user-attachments/assets/11b09eda-1908-42ab-bcde-0082ca5a0c06" />
 
 
 ### Создание индекса:
 
 ```
 
-create index index_for_pets_capacity on petshopschema.petshop(pets_capacity);
+create index index_for_client_name on petshopschema.client using hash (name)
 
 ```
 
 
 ### Результаты выполнения ПОСЛЕ:
 
+<img width="828" height="394" alt="image" src="https://github.com/user-attachments/assets/1054d142-256c-4efb-ada1-6430e5707f24" />
 
 
 ## 4. Выборка всех питомцев, у которых возраст больше 110 лет:
