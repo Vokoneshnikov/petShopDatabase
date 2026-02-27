@@ -23,6 +23,7 @@ select surname where petshopschema.client where surname like 'В%';
 
 ### Результаты выполнения ДО:
 
+<img width="826" height="345" alt="image" src="https://github.com/user-attachments/assets/dce7ac9a-dd54-449a-acbb-9b6dba625f3d" />
 
 ### Создание индекса:
 
@@ -35,6 +36,7 @@ create index index_for_pets_capacity on petshopschema.petshop(pets_capacity);
 
 ### Результаты выполнения ПОСЛЕ:
 
+<img width="920" height="287" alt="image" src="https://github.com/user-attachments/assets/52e372e4-2adc-4c38-8931-f0ef5a8fc5c7" />
 
 ## 2. Выборка всех питомцев, у которых возраст больше 110 лет:
 
