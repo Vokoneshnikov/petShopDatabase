@@ -191,3 +191,9 @@ ORDER BY p.food_id;
 ### Результат:
 <img width="1025" height="430" alt="image" src="https://github.com/user-attachments/assets/e45aa899-2309-4c7b-8feb-f9f7da9b16aa" />
 
+# Grafana:
+
+
+Получилось создать какой-то невнятный дэшборд:
+
+<img width="843" height="402" alt="image" src="https://github.com/user-attachments/assets/7259a13c-6ef9-4745-8879-6193fdb03043" />
