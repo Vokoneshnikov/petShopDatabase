@@ -1,0 +1,55 @@
+services:
+  postgres_exporter:
+    image: prometheuscommunity/postgres-exporter:latest
+    container_name: monitoring_pg_exporter
+    environment:
+      DATA_SOURCE_NAME: "postgresql://app:app123@host.docker.internal:5432/petshopdatabase?sslmode=disable"
+    ports:
+      - "9187:9187"
+    networks:
+      - monitoring_net
+    restart: unless-stopped
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: monitoring_prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/config:/etc/prometheus
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+    networks:
+      - monitoring_net
+    depends_on:
+      - postgres_exporter
+    restart: unless-stopped
+  grafana:
+    image: grafana/grafana:latest
+    container_name: monitoring_grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin123
+      GF_INSTALL_PLUGINS: grafana-piechart-panel
+    volumes:
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - grafana_data:/var/lib/grafana
+    networks:
+      - monitoring_net
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+networks:
+  monitoring_net:
+    driver: bridge
+
+volumes:
+  prometheus_data:
+  grafana_data:
+  
