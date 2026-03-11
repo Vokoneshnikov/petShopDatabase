@@ -137,7 +137,25 @@ on p.breed_id = b.id
 
 <img width="309" height="356" alt="image" src="https://github.com/user-attachments/assets/df6f512f-8f2c-4e47-bb03-305e75cdb18e" />
 
-# Hash Loop
+# Nested Loop
+
+В данном Nested запросе обе таблицы очень маленькие, поэтому он отрабатывает быстро:
+
+```
+
+explain (analyze, buffers, format text)
+select at.name as animal_type, b.breed_name as pet_breed
+from petshopschema.animal_type at join petshopschema.breed b
+on at.id = b.animal_type_id
+
+```
+
+### Результат:
+<img width="947" height="349" alt="image" src="https://github.com/user-attachments/assets/b946b8d8-c057-41bf-a8c6-dbea20d1dc6e" />
+<img width="342" height="419" alt="image" src="https://github.com/user-attachments/assets/6b48fc3a-16bd-4d5d-999a-f598ad1c8474" />
+
+
+# Merge Loop
 
 В данном Hash запросе таблице Food имеет мало записей - 800, а таблица Pet имеет 100к+
 
@@ -150,7 +168,7 @@ on p.breed_id = b.id
 ### Результат:
 
 
-# Hash Loop
+# Merge Loop
 
 В данном Hash запросе таблице Food имеет мало записей - 800, а таблица Pet имеет 100к+
 
@@ -162,16 +180,4 @@ on p.breed_id = b.id
 
 ### Результат:
 
-
-# Hash Loop
-
-В данном Hash запросе таблице Food имеет мало записей - 800, а таблица Pet имеет 100к+
-
-```
-
-
-
-```
-
-### Результат:
 
