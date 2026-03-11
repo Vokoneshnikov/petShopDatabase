@@ -99,3 +99,73 @@ where passport_data like '%5696';
 ### После:
 
 <img width="249" height="108" alt="image" src="https://github.com/user-attachments/assets/7747c7cc-8af5-448d-91ee-cb2332800635" />
+
+# Nested Loop
+
+В данном JOIN запросе таблице Food имеет мало записей - 800, а таблица Pet имеет 100к+
+
+```
+
+explain (analyze, buffers)
+select p.name as pet_name, f.brand_name as brand_name
+from petshopschema.food f
+join petshopschema.pet p on p.food_id = f.id
+where p.name like 'Б%'
+
+```
+
+### Результат:
+<img width="321" height="287" alt="image" src="https://github.com/user-attachments/assets/130c3b98-b49e-4533-b7a9-1d2a33807c64" />
+
+<img width="316" height="101" alt="image" src="https://github.com/user-attachments/assets/5db7e75a-d88c-40bd-8b65-9a7e666eb446" />
+
+# Hash Loop
+
+В данном Hash запросе таблице Food имеет мало записей - 800, а таблица Pet имеет 100к+
+
+```
+
+
+
+```
+
+### Результат:
+
+
+# Hash Loop
+
+В данном Hash запросе таблице Food имеет мало записей - 800, а таблица Pet имеет 100к+
+
+```
+
+
+
+```
+
+### Результат:
+
+
+# Hash Loop
+
+В данном Hash запросе таблице Food имеет мало записей - 800, а таблица Pet имеет 100к+
+
+```
+
+
+
+```
+
+### Результат:
+
+
+# Hash Loop
+
+В данном Hash запросе таблице Food имеет мало записей - 800, а таблица Pet имеет 100к+
+
+```
+
+
+
+```
+
+### Результат:
