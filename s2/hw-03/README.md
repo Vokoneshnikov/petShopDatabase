@@ -100,7 +100,7 @@ where passport_data like '%5696';
 
 <img width="249" height="108" alt="image" src="https://github.com/user-attachments/assets/7747c7cc-8af5-448d-91ee-cb2332800635" />
 
-# Nested Loop
+# Hash Loop
 
 В данном JOIN запросе таблице Food имеет мало записей - 800, а таблица Pet имеет 100к+
 
@@ -117,7 +117,25 @@ where p.name like 'Б%'
 ### Результат:
 <img width="321" height="287" alt="image" src="https://github.com/user-attachments/assets/130c3b98-b49e-4533-b7a9-1d2a33807c64" />
 
-<img width="316" height="101" alt="image" src="https://github.com/user-attachments/assets/5db7e75a-d88c-40bd-8b65-9a7e666eb446" />
+<img width="809" height="396" alt="image" src="https://github.com/user-attachments/assets/7d512bf0-a66a-4fb6-9024-f6a10f19025f" />
+
+# Hash Loop
+
+В данном Hash запросе таблице Pet больше 100к записей, а у Breed около 100
+
+```
+
+explain (analyze, buffers, format text)
+select p.name as pet_name, b.breed_name as pet_breed
+from petshopschema.pet p join petshopschema.breed b
+on p.breed_id = b.id 
+
+```
+
+### Результат:
+<img width="799" height="350" alt="image" src="https://github.com/user-attachments/assets/6433e6d9-71c2-46e2-9065-b226e0bb9ce5" />
+
+<img width="309" height="356" alt="image" src="https://github.com/user-attachments/assets/df6f512f-8f2c-4e47-bb03-305e75cdb18e" />
 
 # Hash Loop
 
@@ -157,15 +175,3 @@ where p.name like 'Б%'
 
 ### Результат:
 
-
-# Hash Loop
-
-В данном Hash запросе таблице Food имеет мало записей - 800, а таблица Pet имеет 100к+
-
-```
-
-
-
-```
-
-### Результат:
