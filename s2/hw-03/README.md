@@ -20,7 +20,7 @@ select distinct name from petshopschema.pet where to_tsvector('russian', name) @
 
 <img width="947" height="99" alt="image" src="https://github.com/user-attachments/assets/3dde1256-f894-49c6-a408-9ed105a3b2f3" />
 
-2. Поиск по тегам
+# 2. Поиск по тегам
 ```
 
 create index idx_pet_tags_gin on petshopschema.pet using gin(tags);
@@ -44,3 +44,31 @@ where tags @> array['игривый'];
 ### После
 
 <img width="906" height="101" alt="image" src="https://github.com/user-attachments/assets/a606c84f-bc86-4789-9aef-b7f46e73ad02" />
+
+# 3. Изменение имен
+
+
+```
+
+
+
+```
+
+```
+
+explain (analyze, buffers)
+update petshopschema.client 
+set name = 'Глеб'
+where passport_data like '%5696';
+
+```
+
+
+### До:
+
+<img width="647" height="104" alt="image" src="https://github.com/user-attachments/assets/4dd8a8b3-c96a-47cd-8f5f-d9ab98850ca1" />
+
+
+### После:
+
+<img width="566" height="94" alt="image" src="https://github.com/user-attachments/assets/3f0447f3-30fc-4ba0-aba9-a7e9deb14fca" />
