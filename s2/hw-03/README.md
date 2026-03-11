@@ -157,27 +157,37 @@ on at.id = b.animal_type_id
 
 # Merge Loop
 
-В данном Hash запросе таблице Food имеет мало записей - 800, а таблица Pet имеет 100к+
+Тут не без помощи нейронки:
 
 ```
+-- Индекс на внешнем ключе в pet
+CREATE INDEX IF NOT EXISTS idx_pet_food_id_sorted 
+ON petshopschema.pet(food_id, id);  -- включаем id для уникальности
+
+-- Индекс на первичном ключе в food
+CREATE INDEX IF NOT EXISTS idx_food_id_sorted 
+ON petshopschema.food(id);
+
+-- Анализируем таблицы
+ANALYZE petshopschema.pet;
+ANALYZE petshopschema.food;
+
+-- 2. Теперь запрос, который использует Merge Join
+EXPLAIN (ANALYZE, BUFFERS, VERBOSE)
+SELECT 
+    p.name as pet_name,
+    p.age,
+    f.brand_name,
+    f.food_type
+FROM petshopschema.pet p
+INNER JOIN petshopschema.food f ON p.food_id = f.id
+WHERE p.age BETWEEN 1 AND 5
+ORDER BY p.food_id; 
 
 
 
 ```
 
 ### Результат:
-
-
-# Merge Loop
-
-В данном Hash запросе таблице Food имеет мало записей - 800, а таблица Pet имеет 100к+
-
-```
-
-
-
-```
-
-### Результат:
-
+<img width="1025" height="430" alt="image" src="https://github.com/user-attachments/assets/e45aa899-2309-4c7b-8feb-f9f7da9b16aa" />
 
