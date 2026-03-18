@@ -98,8 +98,20 @@ FROM pg_ls_waldir();
 
 ```
 # Сделать дамп БД и накатить его на новую чистую БД
+
+Полный дамп:
+
+pg_dump -U postgres -d petshopdatabase > full_backup.sql
+
 ## Dump только структуры базы
+
+pg_dump -U postgres -d petshopdatabase --schema-only > schema_only.sql
+
 ## Dump одной таблицы
+
+pg_dump -U postgres -d petshopdatabase --table=petshopschema.pet > pet_dump.sql
+
+
 # Создать несколько seed
 ## Добавление тестовых данных 
 ## Проверка идемпотентности seed (ON CONFLICT и др)
