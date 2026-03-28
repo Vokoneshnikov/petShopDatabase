@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  pg-master:
+    image: postgres:15
+    container_name: pg-master
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: superpassword
+      POSTGRES_DB: homework
+    ports:
+      - "5431:5432"
+    volumes:
+      - pg-master-data:/var/lib/postgresql/data
+    networks:
+      - pg-net
+
+  pg-replica-physical:
+    image: postgres:15
+    container_name: pg-replica-physical
+    environment:
+      POSTGRES_PASSWORD: superpassword
+    ports:
+      - "5432:5432"
+    volumes: 
+    - pg-replica-physical-data:/var/lib/postgresql/data
+    depends_on:
+      - pg-master
+    networks:
+      - pg-net
+
+  pg-replica-logical:
+    image: postgres:15
+    container_name: pg-replica-logical
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: superpassword
+      POSTGRES_DB: homework
+    ports:
+      - "5433:5432"
+    volumes:
+      - pg-replica-logical-data:/var/lib/postgresql/data
+    depends_on:
+      - pg-master
+    networks:
+      - pg-net
+
+volumes:
+  pg-master-data:
+  pg-replica-physical-data:
+  pg-replica-logical-data:
+
+networks:
+  pg-net:
+    driver: bridge
