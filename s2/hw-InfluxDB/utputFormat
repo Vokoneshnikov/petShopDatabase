@@ -1,0 +1,6 @@
+HTTP/1.1 401 Unauthorized
+cluster-uuid: 91d0b410-8d7b-4ca3-963e-277c4f6989c7
+content-length: 46
+date: Tue, 21 Apr 2026 21:22:22 GMT
+
+{"error": "the request was not authenticated"}

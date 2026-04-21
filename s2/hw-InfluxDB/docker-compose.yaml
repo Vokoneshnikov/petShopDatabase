@@ -1,0 +1,30 @@
+services:
+  influxdb3:
+    image: influxdb:3-core
+    container_name: influxdb3-core
+    command:
+      - influxdb3
+      - serve
+      - --node-id=node0
+      - --object-store=file
+      - --data-dir=/var/lib/influxdb3/data
+    ports:
+      - "8181:8181"
+    volumes:
+      - ./influxdb3-data:/var/lib/influxdb3/data
+    restart: unless-stopped
+
+  explorer:
+    image: influxdata/influxdb3-ui:1.7.0
+    container_name: influxdb3-explorer
+    depends_on:
+      - influxdb3
+    command: ["--mode=admin"]
+    ports:
+      - "8888:8080"
+    volumes:
+      - ./explorer-db:/db
+      - ./config:/app-root/config:ro
+    environment:
+      SESSION_SECRET_KEY: ${SESSION_SECRET_KEY:-changeme123456789012345678901234}
+    restart: unless-stopped
